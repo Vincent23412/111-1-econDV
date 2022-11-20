@@ -6,31 +6,14 @@ output: html_notebook
 
 ```{r}
 library(ggplot2)
-data = read.csv("C:/Users/asd11/OneDrive/桌面/covid19_tw_specimen.csv")
+data = read.csv("C:/Users/asd11/OneDrive/文件/GitHub/111-1-econDV/Covid.csv")
 head(data)
 ```
-```{r}
-library(stringr)
-data$日期=str_sub(data$通報日,start= 6,end=-1L)
-```
-
-```{r}
-data$月份 = str_split(data$日期, pattern = "/", n = 2, simplify = FALSE)
-```
-```{r}
-for (i in data$月份) 
-{
-  print(i[1])
-}
-```
 
 
 ```{r}
-ggplot(data, aes(x = 月份[1] ,y = Total)) + geom_line() 
+ggplot(data, aes(x = 月份 ,y = Total)) + geom_line() 
 ```
 
 
-```{r}
-ggplot(data,aes(x=通報日,y=Total)) + geom_line()
-```
 
