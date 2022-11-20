@@ -6,22 +6,28 @@ output: html_notebook
 
 ```{r}
 library(ggplot2)
+library(dplyr)
+library(lubridate)
 data = read.csv("C:/Users/asd11/OneDrive/文件/GitHub/111-1-econDV/Covid.csv")
+data$時間 = ymd(data$時間)
 ```
 
 
 ```{r}
-mean(data$Total)
-```
-
-
-```{r}
-ggplot(data, aes(x = 月份 ,y = Total)) + 
-geom_line(size=1) + 
-geom_hline(aes(yintercept = mean(Total)),size=1) + 
+plot = data %>% 
+ggplot(aes(x = 時間)) +
+geom_line(mapping = aes(y = 成長率 * 100000 ),size=1 ,color='blue') +
+geom_line(mapping = aes(y = Total),size=1 ,color='red') + 
+scale_y_continuous(name = 'Total', sec.axis = sec_axis(~./100000 , name = "成長率")) +
+geom_hline(aes(yintercept = mean(Total)),size=2,colour='black') + 
 ggtitle("Covid") +
-theme(legend.position = "none")
+theme_gray() 
+print(plot)
 ```
 
+
+```{r}
+ggsave("myplot.png", plot = plot)
+```
 
 
