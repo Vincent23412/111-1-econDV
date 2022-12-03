@@ -1,7 +1,19 @@
----
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(lubridate)
+data = read.csv("C:/Users/asd11/OneDrive/文件/GitHub/111-1-econDV/新北市地價現值.csv")
+```
+
+```{r}
+plot = boxplot(official_value ~ district, data = data, xlab = "區域",
+   ylab = "現值", main = "房價資訊")
+plot
+```
 
 
 ```{r}
-print('aple')
+plot
 ```
 
