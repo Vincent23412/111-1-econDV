@@ -7,13 +7,11 @@ data = read.csv("C:/Users/asd11/OneDrive/文件/GitHub/111-1-econDV/新北市地
 ```
 
 ```{r}
+png("新北市地價.png", width=600, height=600)
 plot = boxplot(official_value ~ district, data = data, xlab = "區域",
-   ylab = "現值", main = "房價資訊")
-plot
+   ylab = "現值", main = "房價資訊",col=c('yellow'))
+
+dev.off()
 ```
 
-
-```{r}
-plot
-```
 
