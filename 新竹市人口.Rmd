@@ -19,10 +19,20 @@ data$年月 = ym(data$年月)
 
 ```
 
+```{r}
+plot = data %>% 
+ggplot(aes(x = 年月)) +
+geom_line(mapping = aes(y = 成長率 * 1000000000 ),size=1 ,color='blue') +
+geom_line(mapping = aes(y = 人口數),size=1 ,color='red') + 
+scale_y_continuous(name = '人口數', sec.axis = sec_axis(~./1000000000 , name = "成長率")) +
+ggtitle("新竹市人口數變化") +
+theme_gray() 
+print(plot)
 ```
+
+
 ```{r}
 ggsave("新竹市人口.png", plot = plot)
-
 ```
 
 
